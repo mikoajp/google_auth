@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for provider in providers %}
+        <a href="{{ path('connect_provider_start', {provider: provider}) }}" class="btn-{{ provider }}">
+            Zaloguj przez {{ provider|capitalize }}
+        </a>
+    {% endfor %}
+{% endblock %}
