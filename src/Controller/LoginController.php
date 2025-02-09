@@ -18,4 +18,10 @@ class LoginController extends AbstractController
             'providers' => ['google', 'facebook', 'apple']
         ]);
     }
+
+    #[Route('/home', name: 'app_home')]
+    public function home(): Response
+    {
+        return $this->render('home/home.html.twig');
+    }
 }

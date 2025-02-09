@@ -1,7 +1,4 @@
 security:
-    password_hashers:
-        App\Entity\User: auto
-
     providers:
         app_user_provider:
             entity:
@@ -10,11 +7,10 @@ security:
 
     firewalls:
         main:
-            lazy: true
+            pattern: ^/
+            stateless: false
             custom_authenticators:
                 - App\Security\GoogleAuthenticator
-            logout:
-                path: app_logout
 
 
             # activate different ways to authenticate

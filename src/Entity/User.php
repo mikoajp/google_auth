@@ -7,11 +7,12 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: 'App\Repository\UserRepository')]
+#[ORM\Table(name: 'users')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: 'id', type: 'integer')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, unique: true)]
@@ -25,8 +26,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'json')]
     private array $roles = [];
-
-    // Getters
     public function getId(): ?int
     {
         return $this->id;

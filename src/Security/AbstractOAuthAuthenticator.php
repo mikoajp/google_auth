@@ -43,9 +43,10 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
             $this->router->generate('app_login', ['error' => $exception->getMessage()])
         );
     }
+
     public function supports(Request $request): ?bool
     {
-        return $request->attributes->get('_route') === 'connect_' . $this->getProviderName() . '_check';
+        return 'connect_provider_check' === $request->attributes->get('_route');
     }
 
     public function authenticate(Request $request): SelfValidatingPassport

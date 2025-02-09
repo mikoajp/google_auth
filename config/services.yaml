@@ -8,6 +8,10 @@ parameters:
 services:
     App\Security\GoogleAuthenticator:
         tags: [security.authenticator]
+        arguments:
+            - '@knpu.oauth2.registry'
+            - '@App\Repository\UserRepository'
+            - '@router'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
