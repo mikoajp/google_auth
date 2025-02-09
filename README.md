@@ -17,7 +17,7 @@
      ```
    - **Baza danych:**
      ```env
-     DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=15&charset=utf8"
+     DATABASE_URL="postgresql://user:password@database:5432/my_app_db?serverVersion=15&charset=utf8"
      ```
    - **Sekret aplikacji (generowanie przez `openssl`):**
      ```bash
@@ -31,10 +31,13 @@
    ```bash
    composer install
    ```
-2. **Konfiguracja bazy danych (opcjonalne):**
+2. **Konfiguracja bazy danych:**
    ```bash
-   symfony console doctrine:database:create
-   symfony console doctrine:migrations:migrate
+   docker-compose build
+   docker-compose up
+   php bin/consol doctrine:database:create
+   php bin/consol doctrine:migrations:migrate
+   php bin/console doctrine:schema:update
    ```
 3. **Uruchomienie serwera developerskiego:**
    ```bash
